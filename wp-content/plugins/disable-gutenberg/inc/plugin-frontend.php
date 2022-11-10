@@ -21,6 +21,9 @@ function disable_gutenberg_wp_enqueue_scripts() {
 		// theme.json
 		wp_dequeue_style('global-styles');
 		
+		// classic theme
+		wp_dequeue_style('classic-theme-styles');
+		
 		// svg
 		remove_action('wp_enqueue_scripts', 'wp_enqueue_global_styles');
 		remove_action('wp_body_open', 'wp_global_styles_render_svg_filters');
