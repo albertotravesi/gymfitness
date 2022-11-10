@@ -40,7 +40,11 @@ add_action('after_setup_theme', 'gymfitness_setup');
 
         //google fonts
         wp_enqueue_style('googleFont', 'https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway:wght@400;700;900&family=Staatliches&display=swap', array(), '1.0.0');
-        
+       
+        //lightbox2-2.11.3 exclusivo para la Galería
+        if(is_page('galeria')):
+            wp_enqueue_style('lightboxCSS', get_template_directory_uri() . '/css/lightbox.min.css', array(), '2.11.3');
+        endif;
         //la hoja de estilos principal
         wp_enqueue_style('style', get_stylesheet_uri(), array('normalize', 'googleFont'), '1.0.0');
 
@@ -49,6 +53,11 @@ add_action('after_setup_theme', 'gymfitness_setup');
 
         //cargar script de slicknav
         wp_enqueue_script('slicknavJS', get_template_directory_uri() . '/js/jquery.slicknav.min.js', array('jquery'), '1.0.0', true);
+
+        //cargar nuestro archivo de lightbox exclusivo para la galería
+        if(is_page('galeria')):
+            wp_enqueue_script('lightboxJS', get_template_directory_uri() . '/js/lightbox.min.js', array('jquery'), '2.11.3', true);
+        endif;
     }
     add_action('wp_enqueue_scripts', 'gymfitness_scripts_styles');
 
